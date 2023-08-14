@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Box, Flex, Center, chakra } from '@chakra-ui/react'
-import Fuse from 'fuse.js'
 
 import data from '../MOCK_DATA.json'
 
@@ -19,25 +18,6 @@ const Search = () => {
 			setSearchResults([])
 			return
 		}
-		const fuse = new Fuse(data, {
-			// keys: ['first_name', 'last_name'], // Keys to index
-			keys: [
-				{
-					name: 'first_name',
-					// weight: 2,
-				},
-				'last_name',
-			], // Keys to index
-			// includeScore: true,
-			// includeMatches: true,
-			// threshold: 0.3, // how perfect the search should be from 0 to 1
-		})
-
-		const result = fuse.search(queryText, {
-			limit: 5,
-		})
-
-		setSearchResults(result)
 	}, [queryText])
 
 	return (
